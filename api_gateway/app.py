@@ -4,8 +4,9 @@ import requests
 
 app = Flask(__name__)
 
-ML_SERVICE_URL = "http://127.0.0.1:8000/predict"
-LLM_SERVICE_URL = "http://127.0.0.1:7000/explain"
+ML_SERVICE_URL = "http://ml-service:8000/predict"
+LLM_SERVICE_URL = "http://llm-service:7000/explain"
+
 
 @app.route("/", methods=["GET"])
 def home():
