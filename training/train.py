@@ -1,3 +1,9 @@
+"""
+NOTE:
+This training script is intended to be run in Kaggle or other
+high-memory environments only. It is NOT part of the runtime system.
+"""
+
 import os
 import pandas as pd
 import joblib
@@ -10,9 +16,7 @@ from sklearn.model_selection import train_test_split
 # --------------------------------------------------
 # Dataset loading (Kaggle environment)
 # --------------------------------------------------
-# In Kaggle, the dataset is available under /kaggle/input
 # Dataset: https://www.kaggle.com/datasets/davidshinn/github-issues
-
 DATASET_PATH = "/kaggle/input/github-issues/github_issues.csv"
 
 print("Loading dataset from:", DATASET_PATH)
@@ -20,10 +24,8 @@ df = pd.read_csv(DATASET_PATH)
 
 
 # --------------------------------------------------
-# Load dataset
+# Text preprocessing
 # --------------------------------------------------
-df = pd.read_csv(csv_path)
-
 df["ticket_text"] = (
     df["issue_title"].fillna("") + " " +
     df["body"].fillna("")
