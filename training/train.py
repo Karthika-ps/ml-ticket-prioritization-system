@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 import joblib
-import kagglehub
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
@@ -9,12 +8,15 @@ from sklearn.model_selection import train_test_split
 
 
 # --------------------------------------------------
-# Download dataset using kagglehub
+# Dataset loading (Kaggle environment)
 # --------------------------------------------------
-dataset_path = kagglehub.dataset_download("davidshinn/github-issues")
+# In Kaggle, the dataset is available under /kaggle/input
+# Dataset: https://www.kaggle.com/datasets/davidshinn/github-issues
 
-csv_path = os.path.join(dataset_path, "github_issues.csv")
-print("Loading dataset from:", csv_path)
+DATASET_PATH = "/kaggle/input/github-issues/github_issues.csv"
+
+print("Loading dataset from:", DATASET_PATH)
+df = pd.read_csv(DATASET_PATH)
 
 
 # --------------------------------------------------
