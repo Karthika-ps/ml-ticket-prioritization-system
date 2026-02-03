@@ -94,6 +94,21 @@ def analyze_ticket():
         "explanation": explanation
     }), 200
 
+def security_override(text: str) -> bool:
+    security_keywords = [
+        "admin",
+        "unauthorized",
+        "access",
+        "security",
+        "vulnerability",
+        "exposed",
+        "private",
+        "leak",
+        "breach"
+    ]
+
+    text_lower = text.lower()
+    return any(keyword in text_lower for keyword in security_keywords)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
