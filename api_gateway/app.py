@@ -69,6 +69,14 @@ def analyze_ticket():
     )
 
     ml_result = ml_response.json()
+    # --------------------------------------------------
+    # Security override
+    # --------------------------------------------------
+    override_applied = False
+    
+    if security_override(ticket_text):
+        ml_result["priority"] = "High"
+        override_applied = True
 
     # --------------------------------------------------
     # Call LLM service
@@ -78,12 +86,12 @@ def analyze_ticket():
         json={
             "text": ticket_text,
             "priority": ml_result["priority"],
-            "confidence": ml_result["confidence"]
+            "confidence": ml_result["confidence"],
+            "override": override_applied
         },
         timeout=5
     )
 
-    explanation = llm_response.json()["explanation"]
 
     # --------------------------------------------------
     # Final response
