@@ -16,11 +16,19 @@ def explain():
     priority = data.get("priority", "")
     confidence = data.get("confidence", {})
 
-    explanation = (
-        f"This ticket was classified as '{priority}' priority "
-        f"because the language indicates system impact or urgency. "
-        f"The model assigned high confidence based on similar historical issues."
-    )
+    override = data.get("override", False)
+
+    if override:
+        explanation = (
+            f"This ticket was escalated to '{priority}' priority due to potential "
+            f"security or unauthorized access concerns, which require immediate attention."
+        )
+    else:
+        explanation = (
+            f"This ticket was classified as '{priority}' priority "
+            f"based on patterns learned from historical support tickets."
+        )
+
 
     return jsonify({
         "explanation": explanation
