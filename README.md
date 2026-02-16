@@ -137,7 +137,7 @@ Note:
 The Docker-based approach is the intended and recommended way to run the system.
 
 ## Repository Structure
-
+```text
 ml-ticket-prioritization-system/
 │
 ├── api_gateway/        # UI + orchestration layer
@@ -147,7 +147,7 @@ ml-ticket-prioritization-system/
 ├── data/               # (Optional) local data utilities
 ├── docker-compose.yml  # Multi-service orchestration
 └── README.md
-
+```
 ## Key Takeaways
 
 - Demonstrates applied ML engineering, not research modeling
